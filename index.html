@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Presentasi Perusahaan - TechNova</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            line-height: 1.6;
+            color: #333;
+            overflow-x: hidden;
+            scroll-behavior: smooth;
+        }
+
+        /* Navigasi */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: linear-gradient(135deg, #c7ea66ff 0%, #6ba24b 100%);
+            padding: 1rem 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        nav ul li {
+            margin: 0 1.5rem;
+        }
+
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+            font-weight: 600;
+            padding: 0.5rem 1rem;
+            border-radius: 25px;
+            transition: all 0.3s ease;
+            background: rgba(255,255,255,0.1);
+        }
+
+        nav ul li a:hover {
+            background: rgba(255,255,255,0.2);
+            transform: translateY(-2px);
+        }
+
+        /* Slide Sections */
+        section {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 2rem;
+            text-align: center;
+            position: relative;
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+        }
+
+        section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('data:image/svg+xml,<svg xmlns=""h viewBox="0 0 100 100"><defs><pattern id="grain" width="100" height="100" patternUnits="userSpaceOnUse"><circle cx="25" cy="25" r="1" fill="white" opacity="0.1"/><circle cx="75" cy="75" r="1" fill="white" opacity="0.1"/><circle cx="50" cy="10" r="0.5" fill="white" opacity="0.05"/></pattern></defs><rect width="100" height="100" fill="url(%23grain)"/></svg>') repeat;
+            pointer-events: none;
+        }
+
+        /* Slide 1: Company Profile */
+        #slide1 {
+            background: linear-gradient(135deg, #e9af44 0%, #67a24b 100%);
+            color: white;
+        }
+
+        #slide1 .company-logo {
+            width: 200px;
+            height: auto;
+            max-width: 100%; /* Prevents overflow on small screens */
+            margin-bottom: 1.5rem;
+            border-radius: 10px; /* Optional: subtle rounding for modern look */
+            box-shadow: 0 8px 25px rgba(0,0,0,0.2); /* Adds depth */
+            transition: transform 0.3s ease;
+        }
+
+        #slide1 .company-logo:hover {
+            transform: scale(1.05); /* Subtle hover effect */
+        }
+
+        #slide1 h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+
+        #slide1 p {
+            font-size: 1.2rem;
+            max-width: 800px;
+            margin: 0 auto;
+            opacity: 0.9;
+        }
+
+        /* Slide 2: Data Diri Karyawan */
+        #slide2 {
+            background: linear-gradient(135deg, #4569b6 0%, #57f5c6 100%);
+        }
+
+        .karyawan-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            max-width: 1200px;
+            width: 100%;
+        }
+
+        .karyawan-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            position: relative;
+            overflow: hidden;
+            text-align: center; /* Center content including images */
+        }
+
+        .karyawan-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 5px;
+            background: linear-gradient(90deg, #72037c 0%, #0fe9e9 100%);
+        }
+
+        .karyawan-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+        }
+
+        .karyawan-card img {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%; /* Circular profile photo */
+            object-fit: cover; /* Ensures image fills circle without distortion */
+            margin-bottom: 1rem;
+            border: 4px solid #f093fb; /* Subtle border matching slide theme */
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+
+        .karyawan-card h3 {
+            color: #333;
+            margin-bottom: 0.5rem;
+            font-size: 1.5rem;
+        }
+
+        .karyawan-card p {
+            color: #666;
+            margin-bottom: 0.5rem;
+        }
+
+        /* Slide 3: Jobdesk */
+        #slide3 {
+            background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+            color: white;
+        }
+
+        #slide3 h1 {
+            font-size: 2.5rem;
+            margin-bottom: 2rem;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+
+        #slide3 .jobdesk-content {
+            max-width: 800px;
+            font-size: 1.1rem;
+            line-height: 1.8;
+            opacity: 0.95;
+            background: rgba(255,255,255,0.1);
+            padding: 2rem;
+            border-radius: 15px;
+            backdrop-filter: blur(10px);
+        }
+
+        /* Responsif */
+        @media (max-width: 768px) {
+            nav ul {
+                flex-direction: column;
+                gap: 1rem;
+            }
+
+            section {
+                padding: 1rem;
+            }
+
+            #slide1 h1 {
+                font-size: 2rem;
+            }
+
+            #slide1 .company-logo {
+                width: 150px; /* Smaller on mobile */
+            }
+
+            .karyawan-container {
+                grid-template-columns: 1fr;
+            }
+
+            .karyawan-card img {
+                width: 100px;
+                height: 100px; /* Smaller on mobile */
+            }
+        }
+
+        /* Animasi Masuk */
+        section {
+            opacity: 0;
+            transform: translateY(50px);
+            animation: fadeInUp 0.8s ease forwards;
+        }
+
+        @keyframes fadeInUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigasi -->
+    <nav>
+        <ul>
+            <li><a href="#slide1">Company Profile</a></li>
+            <li><a href="#slide2">Data Karyawan</a></li>
+            <li><a href="#slide3">Jobdesk Perusahaan</a></li>
+        </ul>
+    </nav>
+
+    <!-- Slide 1: Company Profile -->
+    <section id="slide1">
+        <div>
+            <img src="https://bukitdarmoproperty.com/wp-content/uploads/2024/09/LOGO-250.png" alt="Logo TechNova Company" class="company-logo">
+            <h1>PT. Bukit Darmo Property, Tbk</h1>
+            <p>PT Bukit Darmo Property Tbk (BKDP) adalah perusahaan properti yang bergerak di bidang konstruksi, pengembangan bangunan, serta perdagangan dan investasi. Perusahaan ini didirikan pada tahun 1989 dan berubah nama dari PT Adhibaladika sebelum go public pada tahun 2007. Proyek terkenal mereka di Surabaya meliputi LenMarc Mall dan The Adiwangsa Golf Residence.  </p>
+<p>Fokus utama PT Bukit Darmo Property Tbk (BKDP) adalah pengembangan dan konstruksi properti, dengan bisnis yang mencakup properti residensial (apartemen, kondominium), komersial (mal, ruang perkantoran), dan perhotelan. Perusahaan ini juga fokus pada strategi untuk meningkatkan kinerja bisnis, beradaptasi dengan tren pasar digital, dan menciptakan nilai tambah bagi para pemangku kepentingan. </p>
+        </div>
+    </section>
+
+    <!-- Slide 2: Data Diri Karyawan -->
+    <section id="slide2">
+        <div class="karyawan-container">
+            <div class="karyawan-card">
+                <img src="c:\Users\LENOVO\AppData\Local\Packages\5319275A.WhatsAppDesktop_cv1g1gvanyjgm\TempState\252E691406782824EEC43D7EADC3D256\WhatsApp Image 2025-10-12 at 13.34.15_cd0698ae.jpg" alt="Foto Dian Tri">
+                <h3>Dian Tri wahyudi</h3>
+                <p><strong>Posisi:</strong> IT Support </p>
+                <p><strong>TTL:</strong> Pasuruan, 13 April 1985</p>
+                <p><strong>Usia:</strong> 40 tahun</p>
+            
+            </div>
+            <div class="karyawan-card">
+                <img src="c:\Users\LENOVO\AppData\Local\Packages\5319275A.WhatsAppDesktop_cv1g1gvanyjgm\TempState\B3149ECEA4628EFD23D2F86E5A723472\WhatsApp Image 2025-10-12 at 14.06.17_f6653ef6.jpg" alt="Foto Shynde Aditya">
+                <h3>Shynde Aditya Maulana</h3>
+               <p><strong>Posisi:</strong> Magang </p>
+                <p><strong>TTL:</strong>Surabaya, 02 November 2007</p>
+                <p><strong>Usia:</strong> 18 tahun</p>
+            
+            </div>
+            <div class="karyawan-card">
+                <img src="c:\Users\LENOVO\AppData\Local\Packages\5319275A.WhatsAppDesktop_cv1g1gvanyjgm\TempState\74687A12D3915D3C4D83F1AF7B3683D5\WhatsApp Image 2025-10-12 at 14.07.05_dad13fbe.jpg" alt="Foto Revan Agus">
+                <h3>Revan Agus Widyantara</h3>
+                 <p><strong>Posisi:</strong> Magang </p>
+                <p><strong>TTL:</strong>Surabaya, 16 agustus 2007</p>
+                <p><strong>Usia:</strong> 18 tahun</p>
+            </div>
+            <div class="karyawan-card">
+                <img src="c:\Users\LENOVO\AppData\Local\Packages\5319275A.WhatsAppDesktop_cv1g1gvanyjgm\TempState\5D7B9ADCBE1C629EC722529DD12E5129\WhatsApp Image 2025-10-12 at 14.09.08_aff0e4c8.jpg" alt="Foto Moch. Akbar">
+                <h3>Moch akbar irfansyah</h3>
+                <p><strong>Posisi:</strong> Magang </p>
+                <p><strong>TTL:</strong>Surabaya, 14 oktober 2007</p>
+                <p><strong>Usia:</strong> 18 tahun</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Slide 3: Jobdesk -->
+    <section id="slide3">
+        <div class="jobdesk-content">
+            <h1>Jobdesk di PT. Bukit Darmo Property tbk</h1>
+            <p>PT. Bukit Darmo Property yang berlokasi di Jl. Yono Soewoyo No.9, Fairwaynine Lantai 6 Surabaya, Jawa Timur 60226 Indonesia, bergerak di bidang real estate dan properti, dengan kegiatan usaha meliputi konstruksi dan pengembangan bangunan (seperti kondominium, perumahan, dan apartemen), pengelolaan ruang komersial (seperti mal dan serviced residence), penjualan lahan, dan kontraktor. </p>
+        </div>
+    </section>
+
+    <script>
+        // Sederhana JS untuk smooth scroll dan highlight active slide (opsional, karena permintaan HTML+CSS utama)
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+    </script>
+</body>
+</html>
